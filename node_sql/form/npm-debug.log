@@ -7,7 +7,7 @@
 6 silly lifecycle form@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle form@1.0.0~start: form@1.0.0
 8 verbose lifecycle form@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle form@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/masxiole/Desktop/Node_SQL/node_sql/form/node_modules/.bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+9 verbose lifecycle form@1.0.0~start: PATH: /usr/share/npm/bin/node-gyp-bin:/home/masxiole/Desktop/Node_SQL/node_sql/form/node_modules/.bin:/home/masxiole/.local/bin:/home/masxiole/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 10 verbose lifecycle form@1.0.0~start: CWD: /home/masxiole/Desktop/Node_SQL/node_sql/form
 11 silly lifecycle form@1.0.0~start: Args: [ '-c', 'nodemon express' ]
 12 silly lifecycle form@1.0.0~start: Returned: code: 143  signal: null

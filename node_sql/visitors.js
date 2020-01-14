@@ -7,6 +7,22 @@ const pool = new Pool({
   port: 5432
 });
 
+function createTable () {
+    const table = `CREATE TABLE visitors(
+        ID SERIAL PRIMARY KEY,
+        name VARCHAR(50) NOT NULL,
+        age INT NOT NULL,
+        date DATE NOT NULL,
+        time TIME NOT NULL,
+        assistor VARCHAR(50) NOT NULL,
+        comments VARCHAR(200) NOT NULL)`;
+
+    pool.query(table,(er, res) => {
+            console.log(er, res);
+                pool.end();
+          })
+    };
+
 function addNewVisitor (name, age, date, time, assistor, comments) {
     const tableQuery = `INSERT INTO visitors(name, age, date, time, assistor, comments)
     VALUES ('${name}', ${age}, '${date}', '${time}', '${assistor}', '${comments}')`;
@@ -66,15 +82,11 @@ function removeAll (id) {
       })
 };
 
+
+//createTable();
+//addNewVisitor('Max', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
 //listAllVisitors();
-//addNewVisitor('Sax', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
 //removeById(8);
 //update();
 //visitorInfo(9);
 //removeAll();
-
-
-
-
-
-
