@@ -1,0 +1,19 @@
+{
+  "name": "form",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon express"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "description": ""
+}
+
+
+
