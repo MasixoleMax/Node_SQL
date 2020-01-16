@@ -64,7 +64,7 @@ function update () {
 
 function visitorInfo (id) {
 
-    const visitorInfo = `SELECT * FROM visitors WHERE id=${id}`
+    const visitorInfo = `SELECT * FROM visitors WHERE id =${id}`
 
     pool.query(visitorInfo, (er,res) => {
         console.log(res.rows);
@@ -82,11 +82,12 @@ function removeAll (id) {
       })
 };
 
+module.exports = addNewVisitor;
 
 //createTable();
 //addNewVisitor('Max', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
 //listAllVisitors();
 //removeById(8);
 //update();
-//visitorInfo(9);
+//visitorInfo(1)
 //removeAll();
