@@ -29,7 +29,7 @@ function addNewVisitor (name, age, date, time, assistor, comments) {
 
     pool.query(tableQuery,(er, res) => {
             console.log(er, res);
-                pool.end();
+                // pool.end();
           })
     };
 
@@ -62,15 +62,15 @@ function update () {
       })
 };
 
-function visitorInfo (id) {
+function visitorInfo(name){ 
+    var queryString = `SELECT * FROM visitors WHERE name = '${name}';`
 
-    const visitorInfo = `SELECT * FROM visitors WHERE id =${id}`
-
-    pool.query(visitorInfo, (er,res) => {
+    pool.query(queryString, (er, res) => {
         console.log(res.rows);
-            pool.end();
-      })
-};
+        // pool.end();
+
+    })
+}
 
 function removeAll (id) {
 
@@ -82,12 +82,15 @@ function removeAll (id) {
       })
 };
 
-module.exports = addNewVisitor;
+module.exports = {addNewVisitor, visitorInfo};
 
 //createTable();
 //addNewVisitor('Max', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
 //listAllVisitors();
 //removeById(8);
 //update();
-//visitorInfo(1)
+// visitorInfo('Max');
 //removeAll();
+
+
+
