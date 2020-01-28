@@ -1,4 +1,4 @@
-const Pool = require("pg").Pool;
+const Pool = require("../node_sql/form/node_modules/pg").Pool;
 const pool = new Pool({
   user: "user",
   host: "localhost",
@@ -42,9 +42,18 @@ function listAllVisitors () {
       })
 };
 
+function viewVisitor(id) {
+    const array = `SELECT FROM visitors WHERE id = ${id}`
+
+    pool.query(array, (er,res) => {
+        console.log(res.rows);
+            pool.end();
+      })
+};
+
 function removeById (id) {
 
-    const removeVisitor = ` DELETE FROM visitors WHERE id = ${id}`
+    const removeVisitor = `DELETE FROM visitors WHERE id = ${id}`
 
     pool.query(removeVisitor, (er,res) => {
         console.log(er, res);
@@ -52,9 +61,9 @@ function removeById (id) {
       })
 };
 
-function update () {
+function update(id) {
 
-    const updateVisitor = `UPDATE visitors SET age = 30 WHERE age = 26`
+    const updateVisitor = `UPDATE visitors SET age = 30 WHERE id = ${id}`
 
     pool.query(updateVisitor, (er,res) => {
         console.log(er, res);
@@ -70,11 +79,11 @@ function visitorInfo(name){
         // pool.end();
 
     })
-}
+};
 
-function removeAll (id) {
+function removeAll() {
 
-    const removeAll = `DELETE FROM visitors`
+    const removeAll = `DELETE * FROM visitors`
 
     pool.query(removeAll, (er,res) => {
         console.log(er, res);
@@ -82,15 +91,12 @@ function removeAll (id) {
       })
 };
 
-module.exports = {addNewVisitor, visitorInfo};
+module.exports = {addNewVisitor, visitorInfo, listAllVisitors, removeById, update, removeAll, viewVisitor};
 
 //createTable();
 //addNewVisitor('Max', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
 //listAllVisitors();
 //removeById(8);
 //update();
-// visitorInfo('Max');
+//visitorInfo('Max');
 //removeAll();
-
-
-
