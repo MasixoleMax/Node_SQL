@@ -5,6 +5,7 @@ const pool = new Pool({
   database: "db",
   password: "pass",
   port: 5432
+  
 });
 
 function createTable () {
@@ -77,7 +78,6 @@ function visitorInfo(name){
     pool.query(queryString, (er, res) => {
         console.log(res.rows);
         // pool.end();
-
     })
 };
 
