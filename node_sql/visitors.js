@@ -1,11 +1,11 @@
-const Pool = require("../node_sql/form/node_modules/pg").Pool;
+const Pool = require("./form/node_modules/pg").Pool;
 const pool = new Pool({
   user: "user",
   host: "localhost",
   database: "db",
   password: "pass",
   port: 5432
-  
+
 });
 
 function createTable () {
@@ -44,7 +44,7 @@ function listAllVisitors () {
 };
 
 function viewVisitor(id) {
-    const array = `SELECT FROM visitors WHERE id = ${id}`
+    const array = `SELECT * FROM visitors WHERE id = ${id}`
 
     pool.query(array, (er,res) => {
         console.log(res.rows);
@@ -53,7 +53,6 @@ function viewVisitor(id) {
 };
 
 function removeById (id) {
-
     const removeVisitor = `DELETE FROM visitors WHERE id = ${id}`
 
     pool.query(removeVisitor, (er,res) => {
@@ -63,8 +62,7 @@ function removeById (id) {
 };
 
 function update(id) {
-
-    const updateVisitor = `UPDATE visitors SET age = 30 WHERE id = ${id}`
+    const updateVisitor = `UPDATE visitors SET name = 'Mister' WHERE id = ${id}`
 
     pool.query(updateVisitor, (er,res) => {
         console.log(er, res);
@@ -82,7 +80,6 @@ function visitorInfo(name){
 };
 
 function removeAll() {
-
     const removeAll = `DELETE * FROM visitors`
 
     pool.query(removeAll, (er,res) => {
@@ -95,8 +92,11 @@ module.exports = {addNewVisitor, visitorInfo, listAllVisitors, removeById, updat
 
 //createTable();
 //addNewVisitor('Max', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
-//listAllVisitors();
-//removeById(8);
+// listAllVisitors();
+removeById(8);
 //update();
-//visitorInfo('Max');
+// visitorInfo('Max');
 //removeAll();
+//viewVisitor(6);
+// update(8);
+

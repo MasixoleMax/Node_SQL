@@ -27,7 +27,7 @@ app.get('/single-page-app', (req, res) => {
 
 // add a new visitor to database from visitor's form
 app.post('/userData', (req, res) => {
-   const params = req.body;
+   const params = req.body; 
    const info = visitorInfo(params.visitor_name);
 
    addNewVisitor(params.visitor_name, params.age, params.date, params.time, params.your_name, params.comments);
@@ -66,6 +66,5 @@ app.get('/userData', (req, res) => {
 app.listen(8086, () => {
    console.log('app listening  at port 8086');
 });
-
 
 
