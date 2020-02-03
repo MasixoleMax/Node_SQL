@@ -5,7 +5,6 @@ const pool = new Pool({
   database: "db",
   password: "pass",
   port: 5432
-
 });
 
 function createTable () {
@@ -21,8 +20,8 @@ function createTable () {
     pool.query(table,(er, res) => {
             console.log(er, res);
                 pool.end();
-          })
-    };
+    })
+};
 
 function addNewVisitor (name, age, date, time, assistor, comments) {
     const tableQuery = `INSERT INTO visitors(name, age, date, time, assistor, comments)
@@ -31,16 +30,16 @@ function addNewVisitor (name, age, date, time, assistor, comments) {
     pool.query(tableQuery,(er, res) => {
             console.log(er, res);
                 // pool.end();
-          })
-    };
+    })
+};
 
 function listAllVisitors () {
-    const array = `SELECT DISTINCT id, name FROM visitors`
+    const array = `SELECT * FROM visitors`
 
     pool.query(array, (er,res) => {
         console.log(res.rows);
             pool.end();
-      })
+    })
 };
 
 function viewVisitor(id) {
@@ -49,7 +48,7 @@ function viewVisitor(id) {
     pool.query(array, (er,res) => {
         console.log(res.rows);
             pool.end();
-      })
+    })
 };
 
 function removeById (id) {
@@ -58,7 +57,7 @@ function removeById (id) {
     pool.query(removeVisitor, (er,res) => {
         console.log(er, res);
             pool.end();
-      })
+    })
 };
 
 function update(id) {
@@ -67,15 +66,15 @@ function update(id) {
     pool.query(updateVisitor, (er,res) => {
         console.log(er, res);
             pool.end();
-      })
+    })
 };
 
 function visitorInfo(name){ 
     var queryString = `SELECT * FROM visitors WHERE name = '${name}';`
 
     pool.query(queryString, (er, res) => {
-        console.log(res.rows);
-        // pool.end();
+        console.log(res);
+        pool.end();
     })
 };
 
@@ -85,18 +84,20 @@ function removeAll() {
     pool.query(removeAll, (er,res) => {
         console.log(er, res);
             pool.end();
-      })
+    })
 };
+
+
 
 module.exports = {addNewVisitor, visitorInfo, listAllVisitors, removeById, update, removeAll, viewVisitor};
 
-//createTable();
-//addNewVisitor('Max', 96, '1993-06-08', '15:05:17', 'Masixole', 'He was a boy');
+// createTable();
+// addNewVisitor('Brownie', 98, '1993-06-08', '15:05:17', 'kitten', 'meow!');
 // listAllVisitors();
-removeById(8);
-//update();
+// removeById(8);
+// update();
 // visitorInfo('Max');
-//removeAll();
-//viewVisitor(6);
+// removeAll();
+// viewVisitor(6);
 // update(8);
 

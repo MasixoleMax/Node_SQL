@@ -20,14 +20,14 @@ app.get('/visitorForm', (req, res) => {
 res.sendFile(path.join(__dirname + '/visitorForm.html'));
 });
 
-// serving new html form 
+// serving the new html form as static 
 app.get('/single-page-app', (req, res) => {
    res.sendFile(path.join(__dirname + '/newForm.html'));
-   });
+ });
 
 // add a new visitor to database from visitor's form
 app.post('/userData', (req, res) => {
-   const params = req.body; 
+   let params = req.body; 
    const info = visitorInfo(params.visitor_name);
 
    addNewVisitor(params.visitor_name, params.age, params.date, params.time, params.your_name, params.comments);
@@ -66,5 +66,3 @@ app.get('/userData', (req, res) => {
 app.listen(8086, () => {
    console.log('app listening  at port 8086');
 });
-
-
