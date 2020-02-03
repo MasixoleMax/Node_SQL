@@ -3,10 +3,12 @@ const express = require('express');
 const path = require('path');
 const app = express();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // use bodyParser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cors());
 
 // load vivsitors form statically in browser  
 app.use(express.static(path.resolve(__dirname, '/form'))); 
@@ -43,6 +45,15 @@ app.delete('/userData', (req, res) => {
 // delete all visitors
 app.delete('/userData', (req, res) => {
    removeAll();
+});
+
+// testass
+app.post('/test', (req, res) => {
+   console.log(req.body);
+   
+   res.json({
+      testString:  "ThankYou"
+   })
 });
 
 // view all visitors
