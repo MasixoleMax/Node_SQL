@@ -5,6 +5,7 @@ const pool = new Pool({
   database: "db",
   password: "pass",
   port: 5432
+
 });
 
 function createTable () {
@@ -29,7 +30,7 @@ function addNewVisitor (name, age, date, time, assistor, comments) {
 
     pool.query(tableQuery,(er, res) => {
             console.log(er, res);
-                // pool.end();
+                pool.end();
     })
 };
 
@@ -60,8 +61,8 @@ function removeById (id) {
     })
 };
 
-function update(id) {
-    const updateVisitor = `UPDATE visitors SET name = 'Mister' WHERE id = ${id}`
+function update(name) {
+    const updateVisitor = `UPDATE visitors SET name = 'Mister' WHERE name = ${name}`
 
     pool.query(updateVisitor, (er,res) => {
         console.log(er, res);
@@ -69,8 +70,8 @@ function update(id) {
     })
 };
 
-function visitorInfo(name){ 
-    var queryString = `SELECT * FROM visitors WHERE name = '${name}';`
+function visitorInfo(id){ 
+    var queryString = `SELECT * FROM visitors WHERE id = '${id}';`
 
     pool.query(queryString, (er, res) => {
         console.log(res);
@@ -86,7 +87,6 @@ function removeAll() {
             pool.end();
     })
 };
-
 
 
 module.exports = {addNewVisitor, visitorInfo, listAllVisitors, removeById, update, removeAll, viewVisitor};

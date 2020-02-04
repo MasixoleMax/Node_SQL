@@ -33,7 +33,9 @@ app.post('/userData', (req, res) => {
    const info = visitorInfo(params.visitor_name);
 
    addNewVisitor(params.visitor_name, params.age, params.date, params.time, params.your_name, params.comments);
-   res.send("Thanks for the info! The following information was saved into the database: " + JSON.stringify(info));
+   res.json({
+      message: "Thanks for the info! The following information was saved into the database:"
+   });
 });
 
 // delete a visistor by id
